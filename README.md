@@ -10,3 +10,5 @@ Aby uruchamić aplikację lokalnie należy wykonać następujące kroki:
 6. Aplikacja powinna wyświetlić się w domyślnej przeglądarce
 
 Aplikacja korzysta również z pliku evn.js, w którym zawarte są klucze niezbędne do działania bazy.
+
+Aplikacja znajduje się pod adresem : https://zad-praktyki-deploy.web.app/
