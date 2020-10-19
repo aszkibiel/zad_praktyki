@@ -76,32 +76,40 @@ class Register extends PolymerElement {
   }
 
   postRegister() {
-    firebase.auth().createUserWithEmailAndPassword(this.$.reg_email.value, this.$.reg_password.value).catch(function(error) {
-      var errorCode = error.code;
-      if (errorCode === 'auth/email-already-in-use') {
-        alert('Email już istnieje');
-      } else if (errorCode === 'auth/invalid-email') {
-        alert("Email jest nieprawidłowy");
-      } else if (errorCode === 'auth/weak-password') {
-        alert("Hasło musi składać się z co najmniej 6 znaków");
-      }
-      else {
-        console.log(errorCode);
-      }
-    });
-    
-    var login = this.$.reg_login.value;
-    var email = this.$.reg_email.value;
-    var view = this;
+    if (this.$.reg_login.value.length < 6) {
+      alert('Login powinien zawierać co najmniej 6 znaków!');
+    }
+    else if (/\s/.test(this.$.reg_login.value)) {
+      alert('Login nie powinien zawierać spacji!');
+    }
+    else if (this.$.reg_password.value.indexOf(' ') >= 0) {
+      alert('Hasło nie powinno zawierać spacji!');
+    }
+    else {
+      firebase.auth().createUserWithEmailAndPassword(this.$.reg_email.value, this.$.reg_password.value).catch(function(error) {
+        var errorCode = error.code;
+        if (errorCode === 'auth/email-already-in-use') {
+          alert('Email już istnieje!');
+        } else if (errorCode === 'auth/invalid-email') {
+          alert("Email jest nieprawidłowy!");
+        } else if (errorCode === 'auth/weak-password') {
+          alert("Hasło musi składać się z co najmniej 6 znaków!");
+        }
+      });
+      
+      var login = this.$.reg_login.value;
+      var email = this.$.reg_email.value;
+      var view = this;
 
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        user.updateProfile({
-          displayName: login,
-        });
-        view.postToFirebase(user.uid, login, email);
-      }
-    });
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          user.updateProfile({
+            displayName: login,
+          });
+          view.postToFirebase(user.uid, login, email);
+        }
+      });
+    }
 
   }
 
@@ -112,9 +120,9 @@ class Register extends PolymerElement {
       }
       var errorCode = error.code;
       if (errorCode === 'auth/wrong-password') {
-        alert('Złe hasło');
+        alert('Złe hasło!');
       } else {
-        alert("Email jest nieprawidłowy");
+        alert("Email jest nieprawidłowy!");
       }
     });
   }
