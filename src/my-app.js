@@ -11,7 +11,6 @@ import '@polymer/app-route/app-route.js';
 import '@polymer/iron-pages/iron-pages.js';
 import '@polymer/iron-selector/iron-selector.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
-import './my-icons.js';
 
 setPassiveTouchGestures(true);
 
@@ -20,11 +19,11 @@ setRootPath(MyAppGlobals.rootPath);
 class MyApp extends PolymerElement {
   static get template() {
     return html`
-      <style>
+      <style is="custom-style">
         :host {
-          --app-primary-color: #FFFFFF;
-          --app-secondary-color: black;
-
+          --app-primary-color: #708C84;
+          --app-secondary-color: #9BA685;
+          --app-txt-color: #0D0D0D;
           display: block;
         }
 
@@ -33,12 +32,19 @@ class MyApp extends PolymerElement {
         }
 
         app-header {
-          color: #fff;
-          background-color: var(--app-primary-color);
+          color: var(--app-txt-color);
+          background-color: var(--app-secondary-color);
         }
 
-        app-header paper-icon-button {
-          --paper-icon-button-ink-color: white;
+        app-drawer {
+          --app-drawer-content-container: {
+          background-color: #B0BEC5;
+        }
+        }
+
+        .menu {
+          color: var(--app-txt-color);
+          background-color: var(--app-primary-color);
         }
 
         .drawer-list {
@@ -49,38 +55,33 @@ class MyApp extends PolymerElement {
           display: block;
           padding: 0 16px;
           text-decoration: none;
-          color: var(--app-secondary-color);
+          color: var(--app-txt-color);
           line-height: 40px;
         }
 
         .drawer-list a.iron-selected {
-          color: black;
+          color: var(---app-primary-color);
           font-weight: bold;
         }
+        
       </style>
 
-      <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
-      </app-location>
-
-      <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
-      </app-route>
+      <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+      <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
       <app-drawer-layout fullbleed="" narrow="{{narrow}}">
-        <!-- Drawer content -->
         <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-          <app-toolbar>Menu</app-toolbar>
+          <app-toolbar class="menu">Menu</app-toolbar>
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
             <a name="el-register" href="[[rootPath]]el-register">Zaloguj się</a>
             <a name="el-look" href="[[rootPath]]el-look">Przejrzyj użytkowników</a>
           </iron-selector>
         </app-drawer>
 
-        <!-- Main content -->
         <app-header-layout has-scrolling-region="">
 
           <app-header slot="header" condenses="" reveals="" effects="waterfall">
             <app-toolbar>
-              <paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>
               <div main-title="">Aplikacja, która niewiele robi</div>
             </app-toolbar>
           </app-header>
