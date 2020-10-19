@@ -5,7 +5,7 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
   <template>
     <style>
       .card {
-        margin: 24px;
+        margin: 80px;
         padding: 16px;
         color: #757575;
         border-radius: 5px;
@@ -15,9 +15,16 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
       
       h1 {
         margin: 16px 0;
-        color: #212121;
+        color: #0D0D0D;
         font-size: 22px;
       }
+
+      h3 {
+        margin: 16px 0;
+        color: #757575;
+        font-size: 15px;
+      }
+      
     </style>
   </template>
 </dom-module>`;

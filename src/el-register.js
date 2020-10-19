@@ -13,6 +13,11 @@ class Register extends PolymerElement {
           display: block;
           padding: 10px;
         }
+
+        .primary {
+          color: #0D0D0D;
+          background-color: #B0BEC5;
+        }
       </style>
 
       <div class="card">
@@ -23,7 +28,7 @@ class Register extends PolymerElement {
           <paper-input id="reg_password" label="Wpisz hasło" type="password"></paper-input>
           <div class="reg-log-buttons">
             <paper-button raised class="primary" on-tap="postRegister">Zarejestruj się</paper-button>
-            <paper-button class="primary" on-tap="switchMethod">Masz konto? Zaloguj się</paper-button>
+            <paper-button class="secondary" on-tap="switchMethod">Masz konto? Zaloguj się</paper-button>
           </div>
         </div>
         <div id="login" hidden = "true">
@@ -32,7 +37,7 @@ class Register extends PolymerElement {
           <paper-input id="log_password" label="Wpisz hasło" type="password"></paper-input>
           <div class="log-reg-buttons">
             <paper-button raised class="primary" on-tap="postLogin">Zaloguj się</paper-button>
-            <paper-button class="primary" on-tap="switchMethod">Nie masz konta? zarejestruj się</paper-button>
+            <paper-button class="secondary" on-tap="switchMethod">Nie masz konta? zarejestruj się</paper-button>
           </div>
         </div>
         <div id="authenticated" hidden="true">
