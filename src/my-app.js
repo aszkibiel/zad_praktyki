@@ -82,7 +82,7 @@ class MyApp extends PolymerElement {
 
           <app-header slot="header" condenses="" reveals="" effects="waterfall">
             <app-toolbar>
-              <div main-title="">Aplikacja, która niewiele robi</div>
+              <div main-title="">Aplikacja umożliwiająca rejestrowanie i przeglądanie zarejestrowanych użytkowników</div>
             </app-toolbar>
           </app-header>
 
