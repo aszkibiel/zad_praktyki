@@ -8,3 +8,5 @@ Aby uruchamić aplikację lokalnie należy wykonać następujące kroki:
   c) vaadin-grid: npm i @vaadin/vaadin-grid --save
 5. Wpisać: polymer serve --open
 6. Aplikacja powinna wyświetlić się w domyślnej przeglądarce
+
+Aplikacja korzysta również z pliku evn.js, w którym zawarte są klucze niezbędne do działania bazy.
